@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+import argparse
 
 import pandas as pd
 from lupa.lua54 import LuaRuntime
@@ -66,13 +67,8 @@ def validate_messages(
             raise ValueError(f"Message mismatch for {message_id!r}.")
 
 
-def build_output(
-    trigram_messages: dict[str, list[int]],
-    unigram_messages: dict[str, list[int]],
-) -> dict:
-    alphabet = sorted(
-        {symbol for symbols in trigram_messages.values() for symbol in symbols}
-    )
+def build_output(messages: dict[str, list[int]], unigram: bool) -> dict:
+    alphabet = sorted({symbol for symbols in messages.values() for symbol in symbols})
 
     return {
         "alphabet_size": len(alphabet),
@@ -81,27 +77,24 @@ def build_output(
                 "message_id": message_id,
                 "length": len(symbols),
                 "symbols": symbols,
+                "unigram": unigram,
             }
-            for message_id, symbols in sorted(trigram_messages.items())
-        ],
-        "messages_unigram": [
-            {
-                "message_id": message_id,
-                "length": len(symbols),
-                "symbols": symbols,
-            }
-            for message_id, symbols in sorted(unigram_messages.items())
+            for message_id, symbols in sorted(messages.items())
         ],
     }
 
 
 def main() -> None:
+    p = argparse.ArgumentParser()
+    p.add_argument("--unigram", "-u", action="store_true")
+
+    args = p.parse_args()
     graham_messages = load_graham_messages(RAW_CSV)
     aki_messages, unigram_messages = load_aki_messages(RAW_EYES_DIR)
 
     validate_messages(graham_messages, aki_messages)
-
-    output = build_output(graham_messages, unigram_messages)
+    messages = unigram_messages if args.unigram else graham_messages
+    output = build_output(messages, args.unigram)
 
     OUTPUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     with OUTPUT_JSON.open("w", encoding="utf-8") as f:

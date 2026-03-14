@@ -6,9 +6,9 @@ class Message(BaseModel):
     message_id: str
     length: int
     symbols: list[int]
+    unigram: bool
 
 
 class Corpus(BaseModel):
     alphabet_size: int = Field(gt=0)
     messages: list[Message]
-    messages_unigram: list[Message]
