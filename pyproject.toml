@@ -17,6 +17,7 @@ dependencies = [
   "networkx>=3.3",
   "tqdm>=4.66",
   "lupa>=2.6",
+  "pytest>=9.0.2",
 ]
 
 [project.scripts]
