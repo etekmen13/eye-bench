@@ -21,3 +21,6 @@ dependencies = [
 
 [project.scripts]
 eye-bench = "eye_bench.cli:app"
+[tool.uv]
+package = true
+
