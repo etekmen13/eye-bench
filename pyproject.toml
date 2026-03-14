@@ -1,7 +1,22 @@
 [project]
 name = "eye-bench"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+  "numpy>=2.0",
+  "scipy>=1.13",
+  "pandas>=2.2",
+  "pydantic>=2.7",
+  "typer>=0.12",
+  "rich>=13.7",
+  "orjson>=3.10",
+  "scikit-learn>=1.5",
+  "matplotlib>=3.9",
+  "seaborn>=0.13", 
+  "ortools>=9.10",
+  "networkx>=3.3",
+  "tqdm>=4.66"
+]
+
+[project.scripts]
+eye-bench = "eye_bench.cli:app"
