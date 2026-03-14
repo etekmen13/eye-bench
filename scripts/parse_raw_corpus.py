@@ -1,59 +1,117 @@
+import json
+from pathlib import Path
+
 import pandas as pd
 from lupa.lua54 import LuaRuntime
-import os
-from collections import Counter
-import json
 
-df_graham = pd.read_csv("data/raw/noita_eye_data_trigrams.csv")
 
-messages_graham = {}
+RAW_CSV = Path("data/raw/noita_eye_data_trigrams.csv")
+RAW_EYES_DIR = Path("data/raw/eyes")
+OUTPUT_JSON = Path("data/processed/eyes.json")
 
-cnt = set()
-for _, row in df_graham.iterrows():
-    print(f"row max: {row.iloc[2:].max()}")
-    name = row["Pos"].replace(" ", "").lower()
-    vals = row.iloc[2:].dropna().astype(int).tolist()
-    messages_graham[name] = vals
-    cnt = cnt.union(set(vals))
-print({k: len(v) for k, v in messages_graham.items()})
-print(messages_graham["east1"][:10])
 
-lua = LuaRuntime(unpack_returned_tuples=True)
-files = os.listdir("data/raw/eyes")
-messages_aki = {}
-messages_unigram = {}
-for file in files:
-    with open("data/raw/eyes/" + file, "r") as f:
-        raw = lua.execute(f.read())
-        data = [(raw[i], raw[i + 1], raw[i + 2]) for i in range(1, len(raw) + 1, 3)]
-        messages_unigram[file.split(".")[0]] = [x for t in data for x in t]
-        data = [sum([a * 25, b * 5, c]) for a, b, c in data]
-        messages_aki[file.split(".")[0]] = data
-        cnt = cnt.union(set(data))
+def load_graham_messages(csv_path: Path) -> dict[str, list[int]]:
+    df = pd.read_csv(csv_path)
 
-print({k: len(v) for k, v in messages_aki.items()})
-print(messages_aki["east1"][:10])
+    messages: dict[str, list[int]] = {}
+    for _, row in df.iterrows():
+        message_id = row["Pos"].replace(" ", "").lower()
+        symbols = row.iloc[2:].dropna().astype(int).tolist()
+        messages[message_id] = symbols
 
-for k in messages_graham.keys():
-    if any(x != y for x, y in zip(messages_graham[k], messages_aki[k])):
-        raise ValueError("messages do not match")
+    return messages
 
-print("Messages are identical!")
-print(f"alphabet size: {len(cnt)}")
-print(cnt)
-output = {
-    "alphabet_size": 83,
-    "messages_trigram": [
-        {"message_id": k, "length": len(v), "symbols": v}
-        for k, v in messages_graham.items()
-    ],
-    "messages_unigram": [
-        {"message_id": k, "length": len(v), "symbols": v}
-        for k, v in messages_unigram.items()
-    ],
-}
 
-with open("data/processed/eyes.json", "w+") as f:
-    json.dump(output, f)
+def load_aki_messages(
+    eyes_dir: Path,
+) -> tuple[dict[str, list[int]], dict[str, list[int]]]:
+    lua = LuaRuntime(unpack_returned_tuples=True)
 
-print("Output written to data/processed/eyes.json")
+    trigram_messages: dict[str, list[int]] = {}
+    unigram_messages: dict[str, list[int]] = {}
+
+    for path in sorted(eyes_dir.iterdir()):
+        if not path.is_file():
+            continue
+
+        raw = lua.execute(path.read_text())
+
+        if len(raw) % 3 != 0:
+            raise ValueError(f"{path.name} does not contain a multiple of 3 symbols.")
+
+        triples = [(raw[i], raw[i + 1], raw[i + 2]) for i in range(1, len(raw) + 1, 3)]
+
+        message_id = path.stem
+        unigram_messages[message_id] = [x for triple in triples for x in triple]
+        trigram_messages[message_id] = [25 * a + 5 * b + c for a, b, c in triples]
+
+    return trigram_messages, unigram_messages
+
+
+def validate_messages(
+    reference: dict[str, list[int]],
+    candidate: dict[str, list[int]],
+) -> None:
+    if set(reference) != set(candidate):
+        missing_from_candidate = set(reference) - set(candidate)
+        missing_from_reference = set(candidate) - set(reference)
+        raise ValueError(
+            "Message IDs do not match.\n"
+            f"Missing from candidate: {sorted(missing_from_candidate)}\n"
+            f"Missing from reference: {sorted(missing_from_reference)}"
+        )
+
+    for message_id in sorted(reference):
+        if reference[message_id] != candidate[message_id]:
+            raise ValueError(f"Message mismatch for {message_id!r}.")
+
+
+def build_output(
+    trigram_messages: dict[str, list[int]],
+    unigram_messages: dict[str, list[int]],
+) -> dict:
+    alphabet = sorted(
+        {symbol for symbols in trigram_messages.values() for symbol in symbols}
+    )
+
+    return {
+        "alphabet_size": len(alphabet),
+        "messages": [
+            {
+                "message_id": message_id,
+                "length": len(symbols),
+                "symbols": symbols,
+            }
+            for message_id, symbols in sorted(trigram_messages.items())
+        ],
+        "messages_unigram": [
+            {
+                "message_id": message_id,
+                "length": len(symbols),
+                "symbols": symbols,
+            }
+            for message_id, symbols in sorted(unigram_messages.items())
+        ],
+    }
+
+
+def main() -> None:
+    graham_messages = load_graham_messages(RAW_CSV)
+    aki_messages, unigram_messages = load_aki_messages(RAW_EYES_DIR)
+
+    validate_messages(graham_messages, aki_messages)
+
+    output = build_output(graham_messages, unigram_messages)
+
+    OUTPUT_JSON.parent.mkdir(parents=True, exist_ok=True)
+    with OUTPUT_JSON.open("w", encoding="utf-8") as f:
+        json.dump(output, f, indent=2)
+
+    print("Messages are identical.")
+    print(f"Alphabet size: {output['alphabet_size']}")
+    print(f"Total Length: {sum(len(v) for k, v in graham_messages.items())}")
+    print(f"Output written to {OUTPUT_JSON}")
+
+
+if __name__ == "__main__":
+    main()

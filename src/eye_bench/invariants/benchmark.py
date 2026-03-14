@@ -1,6 +1,6 @@
 from dataclasses import asdict, dataclass
 from itertools import combinations
-from typing import Any
+from typing import Any, Iterable
 
 import numpy as np
 
@@ -60,6 +60,12 @@ class CorpusStats:
         }
         raw["shared_isomorph_counts_by_window"] = {
             str(k): v for k, v in self.shared_isomorph_counts_by_window.items()
+        }
+
+        raw = {
+            k: dict(sorted(map(lambda x: (int(x[0]), x[1]), v.items())))
+            for k, v in raw.items()
+            if isinstance(v, dict)
         }
         return raw
 

@@ -11,3 +11,4 @@ class Message(BaseModel):
 class Corpus(BaseModel):
     alphabet_size: int = Field(gt=0)
     messages: list[Message]
+    messages_unigram: list[Message]

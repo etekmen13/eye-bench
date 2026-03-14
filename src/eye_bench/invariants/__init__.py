@@ -12,8 +12,6 @@ from .isomorphs import (
     isomorph_window_counts,
     isomorph_windows,
     pattern_signature,
-    shared_isomorph_window_count,
-    shared_isomorph_window_jaccard,
     top_isomorph_patterns,
 )
 from .models import (
