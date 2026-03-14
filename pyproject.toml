@@ -12,10 +12,11 @@ dependencies = [
   "orjson>=3.10",
   "scikit-learn>=1.5",
   "matplotlib>=3.9",
-  "seaborn>=0.13", 
+  "seaborn>=0.13",
   "ortools>=9.10",
   "networkx>=3.3",
-  "tqdm>=4.66"
+  "tqdm>=4.66",
+  "lupa>=2.6",
 ]
 
 [project.scripts]
