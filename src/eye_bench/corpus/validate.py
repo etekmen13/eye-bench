@@ -8,3 +8,5 @@ def validate_corpus(corpus: Corpus) -> None:
         seen.add(msg.message_id)
         assert msg.length == len(msg.symbols)
         assert msg.length > 0
+        for x in msg.symbols:
+            assert 0 <= x < corpus.alphabet_size
