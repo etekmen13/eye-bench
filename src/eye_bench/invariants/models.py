@@ -8,7 +8,7 @@ from ._common import (
     _validate_messages,
     _validate_probs,
 )
-from .counts import transition_matrix, unigram_counts
+from .counts import transition_matrix, unigram_counts, context_count_dict
 
 
 def fit_unigram_probs(
@@ -54,6 +54,49 @@ def fit_markov1_probs(
         )
 
     return probs / row_sums
+
+
+def fit_markov_k_probs(
+    data: CorpusLike,
+    alphabet_size: int,
+    k: int,
+    alpha: float = 0.5,
+) -> dict[tuple[int, ...], np.ndarray]:
+    """
+    Fit a smoothed kth-order Markov model:
+
+        q(next_symbol | context)
+
+    where context is a tuple of length k.
+
+    Returns a sparse mapping:
+        context_tuple -> probability vector over next symbols
+
+    This is intentionally sparse rather than a dense tensor because the corpus is
+    small and the number of possible contexts grows as alphabet_size**k.
+    """
+    if k < 1:
+        raise ValueError("k must be >= 1.")
+    if alpha < 0:
+        raise ValueError("alpha must be >= 0.")
+
+    counts_by_context, _ = context_count_dict(
+        data=data,
+        alphabet_size=alphabet_size,
+        k=k,
+    )
+
+    probs_by_context: dict[tuple[int, ...], np.ndarray] = {}
+    for context, counts in counts_by_context.items():
+        probs = counts.astype(np.float64) + alpha
+        total = probs.sum()
+        if total <= 0:
+            raise ValueError(
+                "Encountered zero-sum context while fitting Markov-k model."
+            )
+        probs_by_context[context] = probs / total
+
+    return probs_by_context
 
 
 def cross_entropy_from_counts(

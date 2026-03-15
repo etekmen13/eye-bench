@@ -19,6 +19,7 @@ from .models import (
     cross_entropy_markov1,
     cross_entropy_unigram,
     fit_markov1_probs,
+    fit_markov_k_probs,
     fit_unigram_probs,
     perplexity,
 )
@@ -57,6 +58,7 @@ __all__ = [
     "shared_ngram_jaccard",
     "fit_unigram_probs",
     "fit_markov1_probs",
+    "fit_markov_k_probs",
     "cross_entropy_from_counts",
     "cross_entropy_unigram",
     "cross_entropy_markov1",

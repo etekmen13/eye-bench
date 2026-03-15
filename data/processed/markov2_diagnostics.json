@@ -1,0 +1,46 @@
+{
+  "context_sparsity": {
+    "alphabet_size": 83,
+    "emission_fraction_from_low_support_le_2": 0.8379174852652259,
+    "emission_fraction_from_singletons": 0.7239685658153242,
+    "emissions_from_low_support_le_2": 853,
+    "emissions_from_singletons": 737,
+    "low_support_context_fraction_le_2": 0.9441805225653207,
+    "low_support_contexts_le_2": 795,
+    "max_context_count": 9,
+    "mean_context_count": 1.2090261282660333,
+    "median_context_count": 1.0,
+    "observed_context_fraction": 0.12222383509943388,
+    "observed_contexts": 842,
+    "possible_contexts": 6889,
+    "singleton_context_fraction": 0.8752969121140143,
+    "singleton_contexts": 737,
+    "total_context_emissions": 1018
+  },
+  "markov2_backoff_sampling": {
+    "context_seen_steps": 148,
+    "context_unseen_rate": 0.8546168958742633,
+    "context_unseen_steps": 870,
+    "mode_step_counts": {
+      "order1+order0": 870,
+      "order2+order1+order0": 148
+    },
+    "total_context_steps": 1018,
+    "total_generated_tokens": 1036,
+    "unique_contexts_encountered": 919,
+    "unique_unseen_contexts_encountered": 788
+  },
+  "markov2_sampling": {
+    "context_seen_steps": 147,
+    "context_unseen_rate": 0.8555992141453831,
+    "context_unseen_steps": 871,
+    "mode_step_counts": {
+      "fallback_unigram": 871,
+      "order2_only": 147
+    },
+    "total_context_steps": 1018,
+    "total_generated_tokens": 1036,
+    "unique_contexts_encountered": 931,
+    "unique_unseen_contexts_encountered": 799
+  }
+}
