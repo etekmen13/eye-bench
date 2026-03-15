@@ -103,6 +103,53 @@ def _mean_tv_distance_pairwise_overlap_maps(
     return float(total / len(outer_keys))
 
 
+def _sorted_numeric_values(values: Mapping[str, float | int]) -> list[float]:
+    return sorted(float(value) for value in values.values())
+
+
+def _mean_abs_error_vectors(
+    a: list[float],
+    b: list[float],
+) -> float:
+    length = max(len(a), len(b))
+    if length == 0:
+        return 0.0
+
+    a_padded = a + [0.0] * (length - len(a))
+    b_padded = b + [0.0] * (length - len(b))
+    return float(
+        sum(abs(a_value - b_value) for a_value, b_value in zip(a_padded, b_padded))
+        / length
+    )
+
+
+def _pairwise_value_distribution_distance(
+    a: Mapping[str, float | int],
+    b: Mapping[str, float | int],
+) -> float:
+    """
+    Compare pairwise feature distributions while discarding corpus-specific pair ids.
+    """
+    return _mean_abs_error_vectors(
+        _sorted_numeric_values(a),
+        _sorted_numeric_values(b),
+    )
+
+
+def _mean_pairwise_value_distribution_distance_nested_maps(
+    a: Mapping[int, Mapping[str, float | int]],
+    b: Mapping[int, Mapping[str, float | int]],
+) -> float:
+    outer_keys = sorted(set(a) | set(b))
+    if not outer_keys:
+        return 0.0
+
+    total = 0.0
+    for k in outer_keys:
+        total += _pairwise_value_distribution_distance(a.get(k, {}), b.get(k, {}))
+    return float(total / len(outer_keys))
+
+
 def default_feature_weights() -> dict[str, float]:
     """
     Default weights for the benchmark distance components.
@@ -120,8 +167,11 @@ def default_feature_weights() -> dict[str, float]:
         "mutual_info_by_lag": 2.0,
         "isomorph_counts_by_window": 2.0,
         "exact_ngram_counts_by_n": 1.5,
-        "shared_exact_ngram_counts_by_n": 1.5,
-        "shared_isomorph_counts_by_window": 1.5,
+        "shared_exact_ngram_counts_by_n": 0.25,
+        "shared_isomorph_counts_by_window": 1.25,
+        "shared_exact_ngram_jaccard_by_n": 0.25,
+        "shared_isomorph_jaccard_by_window": 0.75,
+        "local_alignment_ratio_by_pair": 0.25,
     }
 
 
@@ -175,6 +225,22 @@ def corpus_stats_distance(
         "shared_isomorph_counts_by_window": _mean_tv_distance_pairwise_overlap_maps(
             real.shared_isomorph_counts_by_window,
             synthetic.shared_isomorph_counts_by_window,
+        ),
+        "shared_exact_ngram_jaccard_by_n": (
+            _mean_pairwise_value_distribution_distance_nested_maps(
+                real.shared_exact_ngram_jaccard_by_n,
+                synthetic.shared_exact_ngram_jaccard_by_n,
+            )
+        ),
+        "shared_isomorph_jaccard_by_window": (
+            _mean_pairwise_value_distribution_distance_nested_maps(
+                real.shared_isomorph_jaccard_by_window,
+                synthetic.shared_isomorph_jaccard_by_window,
+            )
+        ),
+        "local_alignment_ratio_by_pair": _pairwise_value_distribution_distance(
+            real.local_alignment_ratio_by_pair,
+            synthetic.local_alignment_ratio_by_pair,
         ),
     }
 

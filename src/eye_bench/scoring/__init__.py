@@ -1,3 +1,4 @@
+from .component_analysis import ComponentAnalysisReport, analyze_generator_components
 from .feature_distance import corpus_stats_distance, default_feature_weights
 from .generator_benchmark import (
     BenchmarkComparison,
@@ -8,6 +9,8 @@ from .generator_benchmark import (
 )
 
 __all__ = [
+    "analyze_generator_components",
+    "ComponentAnalysisReport",
     "corpus_stats_distance",
     "default_feature_weights",
     "GeneratorSpec",

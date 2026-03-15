@@ -24,9 +24,13 @@ from .models import (
     perplexity,
 )
 from .sections import (
+    longest_common_substring_length,
     ngram_count_map,
     ngrams,
+    normalized_longest_common_substring,
     pooled_ngram_counts,
+    shared_isomorph_window_count,
+    shared_isomorph_window_jaccard,
     shared_ngram_count,
     shared_ngram_jaccard,
 )
@@ -56,6 +60,8 @@ __all__ = [
     "pooled_ngram_counts",
     "shared_ngram_count",
     "shared_ngram_jaccard",
+    "longest_common_substring_length",
+    "normalized_longest_common_substring",
     "fit_unigram_probs",
     "fit_markov1_probs",
     "fit_markov_k_probs",

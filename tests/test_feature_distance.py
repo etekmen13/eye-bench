@@ -18,6 +18,9 @@ def test_pairwise_overlap_distances_ignore_message_id_renames():
 
     assert distance["shared_exact_ngram_counts_by_n"] == 0.0
     assert distance["shared_isomorph_counts_by_window"] == 0.0
+    assert distance["shared_exact_ngram_jaccard_by_n"] == 0.0
+    assert distance["shared_isomorph_jaccard_by_window"] == 0.0
+    assert distance["local_alignment_ratio_by_pair"] == 0.0
 
 
 def test_shared_isomorph_distance_is_not_forced_to_one_by_id_mismatch():

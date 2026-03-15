@@ -10,9 +10,12 @@ from .dependence import mutual_information, repeat_rate_by_lag, self_follow_rate
 from .entropy import conditional_entropy_k, unigram_entropy
 from .isomorphs import isomorph_window_counts
 from .sections import (
+    normalized_longest_common_substring,
     pooled_ngram_counts,
     shared_isomorph_window_count,
+    shared_isomorph_window_jaccard,
     shared_ngram_count,
+    shared_ngram_jaccard,
 )
 
 
@@ -34,6 +37,9 @@ class CorpusStats:
 
     shared_exact_ngram_counts_by_n: dict[int, dict[str, int]]
     shared_isomorph_counts_by_window: dict[int, dict[str, int]]
+    shared_exact_ngram_jaccard_by_n: dict[int, dict[str, float]]
+    shared_isomorph_jaccard_by_window: dict[int, dict[str, float]]
+    local_alignment_ratio_by_pair: dict[str, float]
 
     def to_json_dict(self) -> dict[str, Any]:
         """
@@ -61,10 +67,19 @@ class CorpusStats:
         raw["shared_isomorph_counts_by_window"] = {
             str(k): v for k, v in self.shared_isomorph_counts_by_window.items()
         }
+        raw["shared_exact_ngram_jaccard_by_n"] = {
+            str(k): v for k, v in self.shared_exact_ngram_jaccard_by_n.items()
+        }
+        raw["shared_isomorph_jaccard_by_window"] = {
+            str(k): v for k, v in self.shared_isomorph_jaccard_by_window.items()
+        }
 
         for key, value in list(raw.items()):
             if isinstance(value, dict):
-                raw[key] = dict(sorted(value.items(), key=lambda item: int(item[0])))
+                if all(str(item[0]).lstrip("-").isdigit() for item in value.items()):
+                    raw[key] = dict(sorted(value.items(), key=lambda item: int(item[0])))
+                else:
+                    raw[key] = dict(sorted(value.items(), key=lambda item: item[0]))
         return raw
 
 
@@ -158,9 +173,16 @@ def compute_corpus_stats(
     }
 
     pairwise_shared_exact: dict[int, dict[str, int]] = {n: {} for n in shared_ngram_ns}
+    pairwise_shared_exact_jaccard: dict[int, dict[str, float]] = {
+        n: {} for n in shared_ngram_ns
+    }
     pairwise_shared_isomorph: dict[int, dict[str, int]] = {
         window: {} for window in shared_isomorph_windows
     }
+    pairwise_shared_isomorph_jaccard: dict[int, dict[str, float]] = {
+        window: {} for window in shared_isomorph_windows
+    }
+    local_alignment_ratio_by_pair: dict[str, float] = {}
 
     for (i, msg_a), (j, msg_b) in combinations(enumerate(messages), 2):
         id_a = message_ids[i]
@@ -172,6 +194,11 @@ def compute_corpus_stats(
 
         for n in shared_ngram_ns:
             pairwise_shared_exact[n][key] = shared_ngram_count(a_list, b_list, n)
+            pairwise_shared_exact_jaccard[n][key] = shared_ngram_jaccard(
+                a_list,
+                b_list,
+                n,
+            )
 
         for window in shared_isomorph_windows:
             pairwise_shared_isomorph[window][key] = shared_isomorph_window_count(
@@ -179,6 +206,18 @@ def compute_corpus_stats(
                 b_list,
                 window,
             )
+            pairwise_shared_isomorph_jaccard[window][key] = (
+                shared_isomorph_window_jaccard(
+                    a_list,
+                    b_list,
+                    window,
+                )
+            )
+
+        local_alignment_ratio_by_pair[key] = normalized_longest_common_substring(
+            a_list,
+            b_list,
+        )
 
     return CorpusStats(
         alphabet_size=alphabet_size,
@@ -193,4 +232,7 @@ def compute_corpus_stats(
         exact_ngram_counts_by_n=exact_ngram_counts_by_n,
         shared_exact_ngram_counts_by_n=pairwise_shared_exact,
         shared_isomorph_counts_by_window=pairwise_shared_isomorph,
+        shared_exact_ngram_jaccard_by_n=pairwise_shared_exact_jaccard,
+        shared_isomorph_jaccard_by_window=pairwise_shared_isomorph_jaccard,
+        local_alignment_ratio_by_pair=local_alignment_ratio_by_pair,
     )

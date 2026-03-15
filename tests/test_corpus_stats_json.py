@@ -21,3 +21,6 @@ def test_corpus_stats_to_json_dict_preserves_scalars_and_stringifies_keys():
     assert "2" in payload["exact_ngram_counts_by_n"]
     assert "3" in payload["shared_exact_ngram_counts_by_n"]
     assert "4" in payload["shared_isomorph_counts_by_window"]
+    assert "3" in payload["shared_exact_ngram_jaccard_by_n"]
+    assert "4" in payload["shared_isomorph_jaccard_by_window"]
+    assert payload["local_alignment_ratio_by_pair"]

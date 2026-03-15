@@ -110,3 +110,48 @@ def shared_isomorph_window_jaccard(
     if not union:
         return 0.0
     return float(len(a_set & b_set) / len(union))
+
+
+def longest_common_substring_length(
+    a: list[int] | tuple[int, ...],
+    b: list[int] | tuple[int, ...],
+) -> int:
+    """
+    Length of the longest contiguous shared substring between two sequences.
+    """
+    a_arr = _as_int_array(a)
+    b_arr = _as_int_array(b)
+
+    if a_arr.size == 0 or b_arr.size == 0:
+        return 0
+
+    prev = [0] * (b_arr.size + 1)
+    best = 0
+
+    for i in range(1, a_arr.size + 1):
+        curr = [0] * (b_arr.size + 1)
+        a_token = int(a_arr[i - 1])
+        for j in range(1, b_arr.size + 1):
+            if a_token == int(b_arr[j - 1]):
+                curr[j] = prev[j - 1] + 1
+                if curr[j] > best:
+                    best = curr[j]
+        prev = curr
+
+    return best
+
+
+def normalized_longest_common_substring(
+    a: list[int] | tuple[int, ...],
+    b: list[int] | tuple[int, ...],
+) -> float:
+    """
+    Longest-common-substring length normalized by the shorter sequence.
+    """
+    a_arr = _as_int_array(a)
+    b_arr = _as_int_array(b)
+
+    denom = min(a_arr.size, b_arr.size)
+    if denom == 0:
+        return 0.0
+    return float(longest_common_substring_length(a, b) / denom)

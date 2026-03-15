@@ -1,3 +1,7 @@
+from .classical import (
+    sample_static_substitution_corpus_like,
+    sample_vigenere_like_corpus_like,
+)
 from .markov1 import sample_markov1_corpus, sample_markov1_corpus_like
 from .markov2 import (
     Markov2ContextSparsity,
@@ -15,6 +19,9 @@ from .markov2 import (
 from .perm_state import (
     PermStateSamplingDiagnostics,
     PermStateV2SamplingDiagnostics,
+    PermStateV3SamplingDiagnostics,
+    make_block_rotation_state_permutations,
+    make_cyclic_message_initial_states,
     make_bucketed_state_delta_by_token,
     make_cyclic_state_permutations,
     make_random_state_delta_by_token,
@@ -27,12 +34,18 @@ from .perm_state import (
     sample_perm_state_v2_corpus_like,
     sample_perm_state_v2_corpus_like_with_diagnostics,
     sample_perm_state_v2_corpus_with_diagnostics,
+    sample_perm_state_v3_corpus,
+    sample_perm_state_v3_corpus_like,
+    sample_perm_state_v3_corpus_like_with_diagnostics,
+    sample_perm_state_v3_corpus_with_diagnostics,
 )
 from .trivial import sample_iid_unigram_corpus, sample_iid_unigram_corpus_like
 
 __all__ = [
     "sample_iid_unigram_corpus",
     "sample_iid_unigram_corpus_like",
+    "sample_static_substitution_corpus_like",
+    "sample_vigenere_like_corpus_like",
     "sample_markov1_corpus",
     "sample_markov1_corpus_like",
     "Markov2ContextSparsity",
@@ -48,11 +61,14 @@ __all__ = [
     "sample_markov2_backoff_corpus_like_with_diagnostics",
     "PermStateSamplingDiagnostics",
     "make_cyclic_state_permutations",
+    "make_block_rotation_state_permutations",
+    "make_cyclic_message_initial_states",
     "sample_perm_state_corpus",
     "sample_perm_state_corpus_with_diagnostics",
     "sample_perm_state_corpus_like",
     "sample_perm_state_corpus_like_with_diagnostics",
     "PermStateV2SamplingDiagnostics",
+    "PermStateV3SamplingDiagnostics",
     "make_bucketed_state_delta_by_token",
     "make_random_state_delta_by_token",
     "make_state_delta_by_token",
@@ -60,4 +76,8 @@ __all__ = [
     "sample_perm_state_v2_corpus_with_diagnostics",
     "sample_perm_state_v2_corpus_like",
     "sample_perm_state_v2_corpus_like_with_diagnostics",
+    "sample_perm_state_v3_corpus",
+    "sample_perm_state_v3_corpus_with_diagnostics",
+    "sample_perm_state_v3_corpus_like",
+    "sample_perm_state_v3_corpus_like_with_diagnostics",
 ]

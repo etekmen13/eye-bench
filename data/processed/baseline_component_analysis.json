@@ -1,0 +1,1081 @@
+{
+  "baseline_name": "markov1",
+  "deltas_vs_baseline": [
+    {
+      "baseline_name": "markov1",
+      "component_deltas": {
+        "alphabet_size": 0.0,
+        "conditional_entropy_by_k": -1.3877787807814457e-17,
+        "exact_ngram_counts_by_n": 0.06032910459990315,
+        "isomorph_counts_by_window": 0.0,
+        "local_alignment_ratio_by_pair": 0.0,
+        "mutual_info_by_lag": 1.3877787807814457e-17,
+        "num_messages": 0.0,
+        "repeat_rate_by_lag": 0.0,
+        "self_follow_rate": 0.0,
+        "shared_exact_ngram_counts_by_n": 0.0,
+        "shared_exact_ngram_jaccard_by_n": 0.0,
+        "shared_isomorph_counts_by_window": 0.0,
+        "shared_isomorph_jaccard_by_window": 0.0,
+        "total_length": 0.0,
+        "total_weighted": 0.09049365689985489,
+        "unigram_entropy": 6.938893903907228e-17
+      },
+      "generator_name": "static_sub",
+      "improved_components": [
+        "conditional_entropy_by_k"
+      ],
+      "total_weighted_delta": 0.09049365689985489,
+      "worsened_components": [
+        "exact_ngram_counts_by_n",
+        "mutual_info_by_lag",
+        "total_weighted",
+        "unigram_entropy"
+      ]
+    },
+    {
+      "baseline_name": "markov1",
+      "component_deltas": {
+        "alphabet_size": 0.0,
+        "conditional_entropy_by_k": 0.003558677772413657,
+        "exact_ngram_counts_by_n": 0.05910188587100573,
+        "isomorph_counts_by_window": 0.0013583991117574745,
+        "local_alignment_ratio_by_pair": 0.0007096873723265729,
+        "mutual_info_by_lag": -0.002352959285963782,
+        "num_messages": 0.0,
+        "repeat_rate_by_lag": -0.00016499098795686677,
+        "self_follow_rate": 0.001421616358325219,
+        "shared_exact_ngram_counts_by_n": 0.0,
+        "shared_exact_ngram_jaccard_by_n": 3.236739307434927e-05,
+        "shared_isomorph_counts_by_window": 0.016444444444444484,
+        "shared_isomorph_jaccard_by_window": 0.005420169830394589,
+        "total_length": 0.0,
+        "total_weighted": 0.12254711177601285,
+        "unigram_entropy": 0.003225939298858012
+      },
+      "generator_name": "perm_state_v2",
+      "improved_components": [
+        "mutual_info_by_lag",
+        "repeat_rate_by_lag"
+      ],
+      "total_weighted_delta": 0.12254711177601285,
+      "worsened_components": [
+        "conditional_entropy_by_k",
+        "exact_ngram_counts_by_n",
+        "isomorph_counts_by_window",
+        "local_alignment_ratio_by_pair",
+        "self_follow_rate",
+        "shared_exact_ngram_jaccard_by_n",
+        "shared_isomorph_counts_by_window",
+        "shared_isomorph_jaccard_by_window",
+        "total_weighted",
+        "unigram_entropy"
+      ]
+    },
+    {
+      "baseline_name": "markov1",
+      "component_deltas": {
+        "alphabet_size": 0.0,
+        "conditional_entropy_by_k": 0.0035925720370220543,
+        "exact_ngram_counts_by_n": 0.058933512250539666,
+        "isomorph_counts_by_window": 0.008358821447577575,
+        "local_alignment_ratio_by_pair": 0.0008369182248628149,
+        "mutual_info_by_lag": -0.003322009628618436,
+        "num_messages": 0.0,
+        "repeat_rate_by_lag": 7.39964685372357e-05,
+        "self_follow_rate": 0.0016942551119766315,
+        "shared_exact_ngram_counts_by_n": 0.0,
+        "shared_exact_ngram_jaccard_by_n": 3.8767814181203675e-05,
+        "shared_isomorph_counts_by_window": 0.03111111111111109,
+        "shared_isomorph_jaccard_by_window": 0.003006782809833297,
+        "total_length": 0.0,
+        "total_weighted": 0.1524831590625646,
+        "unigram_entropy": 0.0037210083262514196
+      },
+      "generator_name": "perm_state_v1",
+      "improved_components": [
+        "mutual_info_by_lag"
+      ],
+      "total_weighted_delta": 0.1524831590625646,
+      "worsened_components": [
+        "conditional_entropy_by_k",
+        "exact_ngram_counts_by_n",
+        "isomorph_counts_by_window",
+        "local_alignment_ratio_by_pair",
+        "repeat_rate_by_lag",
+        "self_follow_rate",
+        "shared_exact_ngram_jaccard_by_n",
+        "shared_isomorph_counts_by_window",
+        "shared_isomorph_jaccard_by_window",
+        "total_weighted",
+        "unigram_entropy"
+      ]
+    },
+    {
+      "baseline_name": "markov1",
+      "component_deltas": {
+        "alphabet_size": 0.0,
+        "conditional_entropy_by_k": 0.0019217596085331357,
+        "exact_ngram_counts_by_n": 0.0585104214831198,
+        "isomorph_counts_by_window": 0.009062403171036626,
+        "local_alignment_ratio_by_pair": 0.000611809334191353,
+        "mutual_info_by_lag": -0.00347117206238709,
+        "num_messages": 0.0,
+        "repeat_rate_by_lag": 0.0001322434350711386,
+        "self_follow_rate": 0.0023563777994157747,
+        "shared_exact_ngram_counts_by_n": 0.0,
+        "shared_exact_ngram_jaccard_by_n": 1.4748478294388662e-05,
+        "shared_isomorph_counts_by_window": 0.04877777777777781,
+        "shared_isomorph_jaccard_by_window": 0.0033916889198213063,
+        "total_length": 0.0,
+        "total_weighted": 0.17480219208748782,
+        "unigram_entropy": 0.004321587398525839
+      },
+      "generator_name": "vigenere_like",
+      "improved_components": [
+        "mutual_info_by_lag"
+      ],
+      "total_weighted_delta": 0.17480219208748782,
+      "worsened_components": [
+        "conditional_entropy_by_k",
+        "exact_ngram_counts_by_n",
+        "isomorph_counts_by_window",
+        "local_alignment_ratio_by_pair",
+        "repeat_rate_by_lag",
+        "self_follow_rate",
+        "shared_exact_ngram_jaccard_by_n",
+        "shared_isomorph_counts_by_window",
+        "shared_isomorph_jaccard_by_window",
+        "total_weighted",
+        "unigram_entropy"
+      ]
+    },
+    {
+      "baseline_name": "markov1",
+      "component_deltas": {
+        "alphabet_size": 0.0,
+        "conditional_entropy_by_k": 0.003802519892617373,
+        "exact_ngram_counts_by_n": 0.059076379392041245,
+        "isomorph_counts_by_window": 0.01121929257599083,
+        "local_alignment_ratio_by_pair": 0.0006877060181327346,
+        "mutual_info_by_lag": 0.002582049796689606,
+        "num_messages": 0.0,
+        "repeat_rate_by_lag": -0.00016265040775028522,
+        "self_follow_rate": 0.0028042843232716653,
+        "shared_exact_ngram_counts_by_n": 0.0,
+        "shared_exact_ngram_jaccard_by_n": 2.282634134776612e-05,
+        "shared_isomorph_counts_by_window": 0.04166666666666663,
+        "shared_isomorph_jaccard_by_window": 0.0018528064970496222,
+        "total_length": 0.0,
+        "total_weighted": 0.1813388554014863,
+        "unigram_entropy": 0.00048398260210422844
+      },
+      "generator_name": "perm_state_v3",
+      "improved_components": [
+        "repeat_rate_by_lag"
+      ],
+      "total_weighted_delta": 0.1813388554014863,
+      "worsened_components": [
+        "conditional_entropy_by_k",
+        "exact_ngram_counts_by_n",
+        "isomorph_counts_by_window",
+        "local_alignment_ratio_by_pair",
+        "mutual_info_by_lag",
+        "self_follow_rate",
+        "shared_exact_ngram_jaccard_by_n",
+        "shared_isomorph_counts_by_window",
+        "shared_isomorph_jaccard_by_window",
+        "total_weighted",
+        "unigram_entropy"
+      ]
+    },
+    {
+      "baseline_name": "markov1",
+      "component_deltas": {
+        "alphabet_size": 0.0,
+        "conditional_entropy_by_k": 0.017227423178010334,
+        "exact_ngram_counts_by_n": 0.048348225227247354,
+        "isomorph_counts_by_window": 0.023696858494650835,
+        "local_alignment_ratio_by_pair": 0.0004022024363100826,
+        "mutual_info_by_lag": 0.10884294281294968,
+        "num_messages": 0.0,
+        "repeat_rate_by_lag": 0.00016180314161038604,
+        "self_follow_rate": 0.0030963972736124633,
+        "shared_exact_ngram_counts_by_n": 0.0,
+        "shared_exact_ngram_jaccard_by_n": 1.347061037725375e-05,
+        "shared_isomorph_counts_by_window": 0.062000000000000055,
+        "shared_isomorph_jaccard_by_window": 0.002747956093241022,
+        "total_length": 0.0,
+        "total_weighted": 0.4328511271095139,
+        "unigram_entropy": -0.01677323427562186
+      },
+      "generator_name": "markov2_backoff",
+      "improved_components": [
+        "unigram_entropy"
+      ],
+      "total_weighted_delta": 0.4328511271095139,
+      "worsened_components": [
+        "conditional_entropy_by_k",
+        "exact_ngram_counts_by_n",
+        "isomorph_counts_by_window",
+        "local_alignment_ratio_by_pair",
+        "mutual_info_by_lag",
+        "repeat_rate_by_lag",
+        "self_follow_rate",
+        "shared_exact_ngram_jaccard_by_n",
+        "shared_isomorph_counts_by_window",
+        "shared_isomorph_jaccard_by_window",
+        "total_weighted"
+      ]
+    },
+    {
+      "baseline_name": "markov1",
+      "component_deltas": {
+        "alphabet_size": 0.0,
+        "conditional_entropy_by_k": 0.017311602257259806,
+        "exact_ngram_counts_by_n": 0.049581648407152845,
+        "isomorph_counts_by_window": 0.02453847994445779,
+        "local_alignment_ratio_by_pair": 0.000360723731861419,
+        "mutual_info_by_lag": 0.11218558635119619,
+        "num_messages": 0.0,
+        "repeat_rate_by_lag": 0.00014295684944133288,
+        "self_follow_rate": 0.0033495618305744886,
+        "shared_exact_ngram_counts_by_n": 0.0,
+        "shared_exact_ngram_jaccard_by_n": 1.5250869927204563e-05,
+        "shared_isomorph_counts_by_window": 0.07222222222222219,
+        "shared_isomorph_jaccard_by_window": 0.005855170345773361,
+        "total_length": 0.0,
+        "total_weighted": 0.4602635263294226,
+        "unigram_entropy": -0.01527266880609066
+      },
+      "generator_name": "markov2",
+      "improved_components": [
+        "unigram_entropy"
+      ],
+      "total_weighted_delta": 0.4602635263294226,
+      "worsened_components": [
+        "conditional_entropy_by_k",
+        "exact_ngram_counts_by_n",
+        "isomorph_counts_by_window",
+        "local_alignment_ratio_by_pair",
+        "mutual_info_by_lag",
+        "repeat_rate_by_lag",
+        "self_follow_rate",
+        "shared_exact_ngram_jaccard_by_n",
+        "shared_isomorph_counts_by_window",
+        "shared_isomorph_jaccard_by_window",
+        "total_weighted"
+      ]
+    },
+    {
+      "baseline_name": "markov1",
+      "component_deltas": {
+        "alphabet_size": 0.0,
+        "conditional_entropy_by_k": 0.02394777357166529,
+        "exact_ngram_counts_by_n": 0.051238907951326906,
+        "isomorph_counts_by_window": 0.03746099062901606,
+        "local_alignment_ratio_by_pair": 0.0002527200278666028,
+        "mutual_info_by_lag": 0.15443477842226783,
+        "num_messages": 0.0,
+        "repeat_rate_by_lag": 0.00037212222276796544,
+        "self_follow_rate": 0.004654333008763389,
+        "shared_exact_ngram_counts_by_n": 0.0,
+        "shared_exact_ngram_jaccard_by_n": 1.4165144277013958e-05,
+        "shared_isomorph_counts_by_window": 0.0902222222222222,
+        "shared_isomorph_jaccard_by_window": 0.004615113168466856,
+        "total_length": 0.0,
+        "total_weighted": 0.6351347321435092,
+        "unigram_entropy": 0.01220442734622676
+      },
+      "generator_name": "iid_unigram",
+      "improved_components": [],
+      "total_weighted_delta": 0.6351347321435092,
+      "worsened_components": [
+        "conditional_entropy_by_k",
+        "exact_ngram_counts_by_n",
+        "isomorph_counts_by_window",
+        "local_alignment_ratio_by_pair",
+        "mutual_info_by_lag",
+        "repeat_rate_by_lag",
+        "self_follow_rate",
+        "shared_exact_ngram_jaccard_by_n",
+        "shared_isomorph_counts_by_window",
+        "shared_isomorph_jaccard_by_window",
+        "total_weighted",
+        "unigram_entropy"
+      ]
+    }
+  ],
+  "rankings_by_component": {
+    "alphabet_size": [
+      {
+        "generator_name": "markov1",
+        "value": 0.0
+      },
+      {
+        "generator_name": "static_sub",
+        "value": 0.0
+      },
+      {
+        "generator_name": "perm_state_v2",
+        "value": 0.0
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 0.0
+      },
+      {
+        "generator_name": "vigenere_like",
+        "value": 0.0
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 0.0
+      },
+      {
+        "generator_name": "markov2_backoff",
+        "value": 0.0
+      },
+      {
+        "generator_name": "markov2",
+        "value": 0.0
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 0.0
+      }
+    ],
+    "conditional_entropy_by_k": [
+      {
+        "generator_name": "static_sub",
+        "value": 0.06624357890306994
+      },
+      {
+        "generator_name": "markov1",
+        "value": 0.06624357890306995
+      },
+      {
+        "generator_name": "vigenere_like",
+        "value": 0.06816533851160309
+      },
+      {
+        "generator_name": "perm_state_v2",
+        "value": 0.0698022566754836
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 0.069836150940092
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 0.07004609879568732
+      },
+      {
+        "generator_name": "markov2_backoff",
+        "value": 0.08347100208108028
+      },
+      {
+        "generator_name": "markov2",
+        "value": 0.08355518116032976
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 0.09019135247473524
+      }
+    ],
+    "exact_ngram_counts_by_n": [
+      {
+        "generator_name": "markov1",
+        "value": 0.9018340861040374
+      },
+      {
+        "generator_name": "markov2_backoff",
+        "value": 0.9501823113312847
+      },
+      {
+        "generator_name": "markov2",
+        "value": 0.9514157345111902
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 0.9530729940553643
+      },
+      {
+        "generator_name": "vigenere_like",
+        "value": 0.9603445075871572
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 0.960767598354577
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 0.9609104654960786
+      },
+      {
+        "generator_name": "perm_state_v2",
+        "value": 0.9609359719750431
+      },
+      {
+        "generator_name": "static_sub",
+        "value": 0.9621631907039405
+      }
+    ],
+    "isomorph_counts_by_window": [
+      {
+        "generator_name": "markov1",
+        "value": 0.11937111436168696
+      },
+      {
+        "generator_name": "static_sub",
+        "value": 0.11937111436168696
+      },
+      {
+        "generator_name": "perm_state_v2",
+        "value": 0.12072951347344443
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 0.12772993580926453
+      },
+      {
+        "generator_name": "vigenere_like",
+        "value": 0.12843351753272358
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 0.1305904069376778
+      },
+      {
+        "generator_name": "markov2_backoff",
+        "value": 0.1430679728563378
+      },
+      {
+        "generator_name": "markov2",
+        "value": 0.14390959430614475
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 0.15683210499070302
+      }
+    ],
+    "local_alignment_ratio_by_pair": [
+      {
+        "generator_name": "markov1",
+        "value": 0.043363323210524905
+      },
+      {
+        "generator_name": "static_sub",
+        "value": 0.043363323210524905
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 0.04361604323839151
+      },
+      {
+        "generator_name": "markov2",
+        "value": 0.043724046942386324
+      },
+      {
+        "generator_name": "markov2_backoff",
+        "value": 0.04376552564683499
+      },
+      {
+        "generator_name": "vigenere_like",
+        "value": 0.04397513254471626
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 0.04405102922865764
+      },
+      {
+        "generator_name": "perm_state_v2",
+        "value": 0.04407301058285148
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 0.04420024143538772
+      }
+    ],
+    "mutual_info_by_lag": [
+      {
+        "generator_name": "vigenere_like",
+        "value": 0.08471276328828134
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 0.08486192572205
+      },
+      {
+        "generator_name": "perm_state_v2",
+        "value": 0.08583097606470465
+      },
+      {
+        "generator_name": "markov1",
+        "value": 0.08818393535066843
+      },
+      {
+        "generator_name": "static_sub",
+        "value": 0.08818393535066844
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 0.09076598514735804
+      },
+      {
+        "generator_name": "markov2_backoff",
+        "value": 0.1970268781636181
+      },
+      {
+        "generator_name": "markov2",
+        "value": 0.20036952170186462
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 0.24261871377293626
+      }
+    ],
+    "num_messages": [
+      {
+        "generator_name": "markov1",
+        "value": 0.0
+      },
+      {
+        "generator_name": "static_sub",
+        "value": 0.0
+      },
+      {
+        "generator_name": "perm_state_v2",
+        "value": 0.0
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 0.0
+      },
+      {
+        "generator_name": "vigenere_like",
+        "value": 0.0
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 0.0
+      },
+      {
+        "generator_name": "markov2_backoff",
+        "value": 0.0
+      },
+      {
+        "generator_name": "markov2",
+        "value": 0.0
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 0.0
+      }
+    ],
+    "repeat_rate_by_lag": [
+      {
+        "generator_name": "perm_state_v2",
+        "value": 0.00558198020513227
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 0.0055843207853388515
+      },
+      {
+        "generator_name": "markov1",
+        "value": 0.005746971193089137
+      },
+      {
+        "generator_name": "static_sub",
+        "value": 0.005746971193089137
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 0.005820967661626372
+      },
+      {
+        "generator_name": "vigenere_like",
+        "value": 0.005879214628160275
+      },
+      {
+        "generator_name": "markov2",
+        "value": 0.00588992804253047
+      },
+      {
+        "generator_name": "markov2_backoff",
+        "value": 0.005908774334699523
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 0.006119093415857102
+      }
+    ],
+    "self_follow_rate": [
+      {
+        "generator_name": "markov1",
+        "value": 0.00928919182083739
+      },
+      {
+        "generator_name": "static_sub",
+        "value": 0.00928919182083739
+      },
+      {
+        "generator_name": "perm_state_v2",
+        "value": 0.010710808179162609
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 0.010983446932814021
+      },
+      {
+        "generator_name": "vigenere_like",
+        "value": 0.011645569620253165
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 0.012093476144109055
+      },
+      {
+        "generator_name": "markov2_backoff",
+        "value": 0.012385589094449853
+      },
+      {
+        "generator_name": "markov2",
+        "value": 0.012638753651411878
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 0.01394352482960078
+      }
+    ],
+    "shared_exact_ngram_counts_by_n": [
+      {
+        "generator_name": "markov1",
+        "value": 0.5
+      },
+      {
+        "generator_name": "static_sub",
+        "value": 0.5
+      },
+      {
+        "generator_name": "perm_state_v2",
+        "value": 0.5
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 0.5
+      },
+      {
+        "generator_name": "vigenere_like",
+        "value": 0.5
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 0.5
+      },
+      {
+        "generator_name": "markov2_backoff",
+        "value": 0.5
+      },
+      {
+        "generator_name": "markov2",
+        "value": 0.5
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 0.5
+      }
+    ],
+    "shared_exact_ngram_jaccard_by_n": [
+      {
+        "generator_name": "markov1",
+        "value": 0.02251659546617007
+      },
+      {
+        "generator_name": "static_sub",
+        "value": 0.02251659546617007
+      },
+      {
+        "generator_name": "markov2_backoff",
+        "value": 0.022530066076547325
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 0.022530760610447086
+      },
+      {
+        "generator_name": "vigenere_like",
+        "value": 0.02253134394446446
+      },
+      {
+        "generator_name": "markov2",
+        "value": 0.022531846336097276
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 0.022539421807517838
+      },
+      {
+        "generator_name": "perm_state_v2",
+        "value": 0.02254896285924442
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 0.022555363280351275
+      }
+    ],
+    "shared_isomorph_counts_by_window": [
+      {
+        "generator_name": "markov1",
+        "value": 0.6385555555555555
+      },
+      {
+        "generator_name": "static_sub",
+        "value": 0.6385555555555555
+      },
+      {
+        "generator_name": "perm_state_v2",
+        "value": 0.655
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 0.6696666666666666
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 0.6802222222222222
+      },
+      {
+        "generator_name": "vigenere_like",
+        "value": 0.6873333333333334
+      },
+      {
+        "generator_name": "markov2_backoff",
+        "value": 0.7005555555555556
+      },
+      {
+        "generator_name": "markov2",
+        "value": 0.7107777777777777
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 0.7287777777777777
+      }
+    ],
+    "shared_isomorph_jaccard_by_window": [
+      {
+        "generator_name": "markov1",
+        "value": 0.09351573727417421
+      },
+      {
+        "generator_name": "static_sub",
+        "value": 0.09351573727417421
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 0.09536854377122383
+      },
+      {
+        "generator_name": "markov2_backoff",
+        "value": 0.09626369336741523
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 0.09652252008400751
+      },
+      {
+        "generator_name": "vigenere_like",
+        "value": 0.09690742619399552
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 0.09813085044264107
+      },
+      {
+        "generator_name": "perm_state_v2",
+        "value": 0.0989359071045688
+      },
+      {
+        "generator_name": "markov2",
+        "value": 0.09937090761994757
+      }
+    ],
+    "total_length": [
+      {
+        "generator_name": "markov1",
+        "value": 0.0
+      },
+      {
+        "generator_name": "static_sub",
+        "value": 0.0
+      },
+      {
+        "generator_name": "perm_state_v2",
+        "value": 0.0
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 0.0
+      },
+      {
+        "generator_name": "vigenere_like",
+        "value": 0.0
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 0.0
+      },
+      {
+        "generator_name": "markov2_backoff",
+        "value": 0.0
+      },
+      {
+        "generator_name": "markov2",
+        "value": 0.0
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 0.0
+      }
+    ],
+    "total_weighted": [
+      {
+        "generator_name": "markov1",
+        "value": 2.9475747171063875
+      },
+      {
+        "generator_name": "static_sub",
+        "value": 3.0380683740062424
+      },
+      {
+        "generator_name": "perm_state_v2",
+        "value": 3.0701218288824004
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 3.100057876168952
+      },
+      {
+        "generator_name": "vigenere_like",
+        "value": 3.1223769091938753
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 3.128913572507874
+      },
+      {
+        "generator_name": "markov2_backoff",
+        "value": 3.3804258442159014
+      },
+      {
+        "generator_name": "markov2",
+        "value": 3.40783824343581
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 3.5827094492498968
+      }
+    ],
+    "unigram_entropy": [
+      {
+        "generator_name": "markov2_backoff",
+        "value": 0.02370133279829183
+      },
+      {
+        "generator_name": "markov2",
+        "value": 0.02520189826782303
+      },
+      {
+        "generator_name": "markov1",
+        "value": 0.04047456707391369
+      },
+      {
+        "generator_name": "static_sub",
+        "value": 0.04047456707391376
+      },
+      {
+        "generator_name": "perm_state_v3",
+        "value": 0.04095854967601792
+      },
+      {
+        "generator_name": "perm_state_v2",
+        "value": 0.0437005063727717
+      },
+      {
+        "generator_name": "perm_state_v1",
+        "value": 0.04419557540016511
+      },
+      {
+        "generator_name": "vigenere_like",
+        "value": 0.04479615447243953
+      },
+      {
+        "generator_name": "iid_unigram",
+        "value": 0.05267899442014045
+      }
+    ]
+  },
+  "spreads_by_component": [
+    {
+      "best_generator": "markov1",
+      "best_value": 2.9475747171063875,
+      "component_name": "total_weighted",
+      "mean_value": 3.1975652016408156,
+      "spread": 0.6351347321435092,
+      "std_value": 0.19721369003717734,
+      "worst_generator": "iid_unigram",
+      "worst_value": 3.5827094492498968
+    },
+    {
+      "best_generator": "vigenere_like",
+      "best_value": 0.08471276328828134,
+      "component_name": "mutual_info_by_lag",
+      "mean_value": 0.1291727371735722,
+      "spread": 0.15790595048465492,
+      "std_value": 0.06073352001398083,
+      "worst_generator": "iid_unigram",
+      "worst_value": 0.24261871377293626
+    },
+    {
+      "best_generator": "markov1",
+      "best_value": 0.6385555555555555,
+      "component_name": "shared_isomorph_counts_by_window",
+      "mean_value": 0.6788271604938272,
+      "spread": 0.0902222222222222,
+      "std_value": 0.029735095221336993,
+      "worst_generator": "iid_unigram",
+      "worst_value": 0.7287777777777777
+    },
+    {
+      "best_generator": "markov1",
+      "best_value": 0.9018340861040374,
+      "component_name": "exact_ngram_counts_by_n",
+      "mean_value": 0.9512918733465192,
+      "spread": 0.06032910459990315,
+      "std_value": 0.018030660999965146,
+      "worst_generator": "static_sub",
+      "worst_value": 0.9621631907039405
+    },
+    {
+      "best_generator": "markov1",
+      "best_value": 0.11937111436168696,
+      "component_name": "isomorph_counts_by_window",
+      "mean_value": 0.13222614162551888,
+      "spread": 0.03746099062901606,
+      "std_value": 0.012290254527252884,
+      "worst_generator": "iid_unigram",
+      "worst_value": 0.15683210499070302
+    },
+    {
+      "best_generator": "markov2_backoff",
+      "best_value": 0.02370133279829183,
+      "component_name": "unigram_entropy",
+      "mean_value": 0.039575793950608555,
+      "spread": 0.02897766162184862,
+      "std_value": 0.008815621572314828,
+      "worst_generator": "iid_unigram",
+      "worst_value": 0.05267899442014045
+    },
+    {
+      "best_generator": "static_sub",
+      "best_value": 0.06624357890306994,
+      "component_name": "conditional_entropy_by_k",
+      "mean_value": 0.07417272649390569,
+      "spread": 0.023947773571665304,
+      "std_value": 0.008484313540673227,
+      "worst_generator": "iid_unigram",
+      "worst_value": 0.09019135247473524
+    },
+    {
+      "best_generator": "markov1",
+      "best_value": 0.09351573727417421,
+      "component_name": "shared_isomorph_jaccard_by_window",
+      "mean_value": 0.09650348034801644,
+      "spread": 0.005855170345773361,
+      "std_value": 0.0020041485709150395,
+      "worst_generator": "markov2",
+      "worst_value": 0.09937090761994757
+    },
+    {
+      "best_generator": "markov1",
+      "best_value": 0.00928919182083739,
+      "component_name": "self_follow_rate",
+      "mean_value": 0.011442172454830682,
+      "spread": 0.004654333008763389,
+      "std_value": 0.0014552642429100406,
+      "worst_generator": "iid_unigram",
+      "worst_value": 0.01394352482960078
+    },
+    {
+      "best_generator": "markov1",
+      "best_value": 0.043363323210524905,
+      "component_name": "local_alignment_ratio_by_pair",
+      "mean_value": 0.043792408448919524,
+      "spread": 0.0008369182248628149,
+      "std_value": 0.0002886880394397595,
+      "worst_generator": "perm_state_v1",
+      "worst_value": 0.04420024143538772
+    },
+    {
+      "best_generator": "perm_state_v2",
+      "best_value": 0.00558198020513227,
+      "component_name": "repeat_rate_by_lag",
+      "mean_value": 0.005808691273280348,
+      "spread": 0.0005371132107248322,
+      "std_value": 0.00015897188296096082,
+      "worst_generator": "iid_unigram",
+      "worst_value": 0.006119093415857102
+    },
+    {
+      "best_generator": "markov1",
+      "best_value": 0.02251659546617007,
+      "component_name": "shared_exact_ngram_jaccard_by_n",
+      "mean_value": 0.022533439538556646,
+      "spread": 3.8767814181203675e-05,
+      "std_value": 1.2249007855177027e-05,
+      "worst_generator": "perm_state_v1",
+      "worst_value": 0.022555363280351275
+    },
+    {
+      "best_generator": "markov1",
+      "best_value": 0.0,
+      "component_name": "alphabet_size",
+      "mean_value": 0.0,
+      "spread": 0.0,
+      "std_value": 0.0,
+      "worst_generator": "iid_unigram",
+      "worst_value": 0.0
+    },
+    {
+      "best_generator": "markov1",
+      "best_value": 0.0,
+      "component_name": "num_messages",
+      "mean_value": 0.0,
+      "spread": 0.0,
+      "std_value": 0.0,
+      "worst_generator": "iid_unigram",
+      "worst_value": 0.0
+    },
+    {
+      "best_generator": "markov1",
+      "best_value": 0.5,
+      "component_name": "shared_exact_ngram_counts_by_n",
+      "mean_value": 0.5,
+      "spread": 0.0,
+      "std_value": 0.0,
+      "worst_generator": "iid_unigram",
+      "worst_value": 0.5
+    },
+    {
+      "best_generator": "markov1",
+      "best_value": 0.0,
+      "component_name": "total_length",
+      "mean_value": 0.0,
+      "spread": 0.0,
+      "std_value": 0.0,
+      "worst_generator": "iid_unigram",
+      "worst_value": 0.0
+    }
+  ]
+}
