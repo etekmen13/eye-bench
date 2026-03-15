@@ -14,11 +14,19 @@ from .markov2 import (
 )
 from .perm_state import (
     PermStateSamplingDiagnostics,
+    PermStateV2SamplingDiagnostics,
+    make_bucketed_state_delta_by_token,
     make_cyclic_state_permutations,
+    make_random_state_delta_by_token,
+    make_state_delta_by_token,
     sample_perm_state_corpus,
     sample_perm_state_corpus_like,
     sample_perm_state_corpus_like_with_diagnostics,
     sample_perm_state_corpus_with_diagnostics,
+    sample_perm_state_v2_corpus,
+    sample_perm_state_v2_corpus_like,
+    sample_perm_state_v2_corpus_like_with_diagnostics,
+    sample_perm_state_v2_corpus_with_diagnostics,
 )
 from .trivial import sample_iid_unigram_corpus, sample_iid_unigram_corpus_like
 
@@ -44,4 +52,12 @@ __all__ = [
     "sample_perm_state_corpus_with_diagnostics",
     "sample_perm_state_corpus_like",
     "sample_perm_state_corpus_like_with_diagnostics",
+    "PermStateV2SamplingDiagnostics",
+    "make_bucketed_state_delta_by_token",
+    "make_random_state_delta_by_token",
+    "make_state_delta_by_token",
+    "sample_perm_state_v2_corpus",
+    "sample_perm_state_v2_corpus_with_diagnostics",
+    "sample_perm_state_v2_corpus_like",
+    "sample_perm_state_v2_corpus_like_with_diagnostics",
 ]

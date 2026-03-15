@@ -62,11 +62,9 @@ class CorpusStats:
             str(k): v for k, v in self.shared_isomorph_counts_by_window.items()
         }
 
-        raw = {
-            k: dict(sorted(map(lambda x: (int(x[0]), x[1]), v.items())))
-            for k, v in raw.items()
-            if isinstance(v, dict)
-        }
+        for key, value in list(raw.items()):
+            if isinstance(value, dict):
+                raw[key] = dict(sorted(value.items(), key=lambda item: int(item[0])))
         return raw
 
 

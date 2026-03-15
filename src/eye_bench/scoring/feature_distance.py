@@ -66,6 +66,43 @@ def _mean_tv_distance_nested_maps(
     return float(total / len(outer_keys))
 
 
+def _count_histogram(counts: Mapping[str, int]) -> dict[str, int]:
+    """
+    Collapse a pair-id keyed map into a histogram over observed overlap counts.
+
+    This makes pairwise-overlap features invariant to message-id renaming.
+    """
+    histogram: dict[str, int] = {}
+    for value in counts.values():
+        key = str(max(int(value), 0))
+        histogram[key] = histogram.get(key, 0) + 1
+    return histogram
+
+
+def _mean_tv_distance_pairwise_overlap_maps(
+    a: Mapping[int, Mapping[str, int]],
+    b: Mapping[int, Mapping[str, int]],
+) -> float:
+    """
+    Compare pairwise-overlap maps after discarding message-pair identifiers.
+
+    The inner keys are corpus-specific pair ids like "east1__west2", so comparing
+    them directly produces a maximal distance when two otherwise identical corpora
+    use different message ids.
+    """
+    outer_keys = sorted(set(a) | set(b))
+    if not outer_keys:
+        return 0.0
+
+    total = 0.0
+    for k in outer_keys:
+        total += _tv_distance_count_maps(
+            _count_histogram(a.get(k, {})),
+            _count_histogram(b.get(k, {})),
+        )
+    return float(total / len(outer_keys))
+
+
 def default_feature_weights() -> dict[str, float]:
     """
     Default weights for the benchmark distance components.
@@ -131,11 +168,11 @@ def corpus_stats_distance(
             real.exact_ngram_counts_by_n,
             synthetic.exact_ngram_counts_by_n,
         ),
-        "shared_exact_ngram_counts_by_n": _mean_tv_distance_nested_maps(
+        "shared_exact_ngram_counts_by_n": _mean_tv_distance_pairwise_overlap_maps(
             real.shared_exact_ngram_counts_by_n,
             synthetic.shared_exact_ngram_counts_by_n,
         ),
-        "shared_isomorph_counts_by_window": _mean_tv_distance_nested_maps(
+        "shared_isomorph_counts_by_window": _mean_tv_distance_pairwise_overlap_maps(
             real.shared_isomorph_counts_by_window,
             synthetic.shared_isomorph_counts_by_window,
         ),

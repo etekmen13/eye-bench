@@ -9,6 +9,7 @@ from eye_bench.ciphers import (
     sample_markov2_backoff_corpus_like,
     sample_markov2_corpus_like,
     sample_perm_state_corpus_like,
+    sample_perm_state_v2_corpus_like,
 )
 from eye_bench.corpus import load_corpus, validate_corpus
 from eye_bench.scoring import GeneratorSpec, benchmark_generators
@@ -44,6 +45,16 @@ def main() -> None:
             generate=lambda ref, seed: sample_perm_state_corpus_like(
                 ref,
                 num_states=4,
+                seed=seed,
+            ),
+        ),
+        GeneratorSpec(
+            name="perm_state_v2",
+            generate=lambda ref, seed: sample_perm_state_v2_corpus_like(
+                ref,
+                num_states=4,
+                delta_mode="bucketed",
+                num_buckets=4,
                 seed=seed,
             ),
         ),
